@@ -1,0 +1,1 @@
+rm /media/sf_VBOXSHARE/TEMP_OUT/Results/SMALT/GenomeCoverage/MD15_trim_smalt_sort_RG_realigned_resorted_dedup_genomecov.txt

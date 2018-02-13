@@ -1,0 +1,4 @@
+gunzip /home/ndc/FASTQ/single_colonies_renamed/R1035-C11_R1.fastq.gz
+/home/ndc/USAP/Tools/spolpred/spolpred.run /home/ndc/FASTQ/single_colonies_renamed/R1035-C11_R1.fastq -l 101 -o "/media/ndc/Seagate Backup Plus Drive/single_col_out/"Results/SpolPredOut/R1035-C11_R1_spolPredOut.txt
+#gzip /home/ndc/FASTQ/single_colonies_renamed/R1035-C11_R1.fastq &
+

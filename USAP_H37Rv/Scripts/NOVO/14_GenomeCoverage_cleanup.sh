@@ -1,0 +1,1 @@
+rm /media/sf_VBOXSHARE/TEMP_OUT/Results/NOVO/GenomeCoverage/MD15_trim_novo_realigned_resorted_dedup_genomecov.txt

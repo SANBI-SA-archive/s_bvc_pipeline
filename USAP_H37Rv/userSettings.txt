@@ -1,0 +1,32 @@
+CPU_CORES	10
+SYSTEM_MEMORY	65000
+FASTQ_DIRECTORY	/home/adippenaar/run_seqs_06_02_2018_fastqs
+OUTPUT_DIRECTORY	/home/adippenaar/run_seqs_06_02_2018_out
+READS_TYPE	mixed
+reference	MycobacteriumTuberculosis_H37Rv
+trimmingMode	Quality_Trim
+----------------------------------------------------
+Mapper settings:
+Mapper BWA:	True
+Mapper NOVOAlign:	True
+Mapper SMALT:	True
+----------------------------------------------------
+Variant detection settings:
+Variant Detection tools GATK:	True
+Variant Detection tools SAMTools (mpileup):	True
+----------------------------------------------------
+Variant Filtering Settings:
+mapperCount_GATK =	3
+mapperCount_SAMTOOLS =	3
+qualityCutOff_GATK =	0.0
+qualityCutOff_SAMTOOLS =	0.0
+minCoverage_GATK =	0
+minCoverage_SAMTOOLS =	0
+readFreqCutoff_GATK =	0.8
+readFreqCutoff_SAMTOOLS =	0.8
+filterMappabilityPositions =	False
+filterCustomPositions =	False
+filterOnKeywords =	True
+----------------------------------------------------
+Minimum_Genome_Coverage =	20
+Minimum_percentage_mapped_reads =	90.0

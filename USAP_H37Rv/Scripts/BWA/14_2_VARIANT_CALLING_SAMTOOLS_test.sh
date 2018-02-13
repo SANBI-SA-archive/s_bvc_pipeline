@@ -1,0 +1,1 @@
+/home/pagit/USAP/Tools/samtools-1.3/samtools mpileup -uf /home/pagit/USAP/Reference/MycobacteriumTuberculosis_H37Rv/FASTA/H37Rv_4411532_updated_13_jun_2013.fasta /media/sf_VBOXSHARE/EX_OUT/Results/BWA/Alignment_Files/X98_bwa_realigned_resorted_dedup.bam | head 

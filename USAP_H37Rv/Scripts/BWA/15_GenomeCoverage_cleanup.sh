@@ -1,0 +1,1 @@
+rm /media/sf_VBOXSHARE/TEMP_OUT/Results/BWA/GenomeCoverage/MD15_bwa_realigned_resorted_dedup_genomecov.txt

@@ -1,0 +1,32 @@
+CPU_CORES	8
+SYSTEM_MEMORY	11886
+FASTQ_DIRECTORY	/media/ndc/Anzaan 1TB/HiSeq4000_July_2016_Arnab_Pain/run1
+OUTPUT_DIRECTORY	/home/ndc/Documents/arnab
+READS_TYPE	mixed
+reference	MycobacteriumTuberculosis_H37Rv
+trimmingMode	Quality_Trim
+----------------------------------------------------
+Mapper settings:
+Mapper BWA:	True
+Mapper NOVOAlign:	True
+Mapper SMALT:	True
+----------------------------------------------------
+Variant detection settings:
+Variant Detection tools GATK:	True
+Variant Detection tools SAMTools (mpileup):	True
+----------------------------------------------------
+Variant Filtering Settings:
+mapperCount_GATK =	3
+mapperCount_SAMTOOLS =	0
+qualityCutOff_GATK =	0.0
+qualityCutOff_SAMTOOLS =	0.0
+minCoverage_GATK =	0
+minCoverage_SAMTOOLS =	0
+readFreqCutoff_GATK =	0.05
+readFreqCutoff_SAMTOOLS =	0.0
+filterMappabilityPositions =	False
+filterCustomPositions =	False
+filterOnKeywords =	False
+----------------------------------------------------
+Minimum_Genome_Coverage =	40
+Minimum_percentage_mapped_reads =	90.0

@@ -1,0 +1,539 @@
+#include <stdio.h> 
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+#include <stdbool.h>
+
+#include "prob_common.h"
+#include "resource.h"
+
+/*
+#define READ1 0
+#define READ2 1
+
+#define FST   0
+#define SND   1
+
+
+typedef struct _prob_elem
+{
+    // store raw information
+    char base;
+    int  pos;   // org_pos
+    int  flag;
+    int  *maq[2];
+    double qual;
+    //int  flag[2][2];
+    // calculate through window list
+    int id;
+    //int  size;
+
+    struct _prob_elem * next;
+
+} prob_elem;
+
+typedef struct _prob_window
+{
+    prob_elem * head;
+    prob_elem * tail;
+    int cov;
+    int size;
+    int prev_pos;
+    int next_pos;
+
+} prob_window;
+
+#ifndef min
+    #define min( a, b ) ( ((a) < (b)) ? (a) : (b) ) 
+#endif
+#ifndef max
+    #define max( a, b ) ( ((a) > (b)) ? (a) : (b) ) 
+#endif
+
+prob_window pw;
+
+
+//void prob_init_elem( prob_elem * pb, int length, int buf_for_pacbio )
+void prob_init_elem( prob_elem * pb, int length )
+{
+    pb->base = '*';
+    pb->pos = 0;
+
+    pb->maq[READ1] = malloc( sizeof(int)*length*pw.size );      // for buffer
+    memset( pb->maq[READ1], 0, sizeof(int)*length*pw.size );
+
+    pb->maq[READ2] = malloc( sizeof(int)*length*pw.size );      // for buffer
+    memset( pb->maq[READ2], 0, sizeof(int)*length*pw.size );
+
+    fprintf( stderr, "%s prob_init_elem called\n", INFO_008 );
+
+
+    // calculate through window list
+    pb->qual = 0.0;
+    pb->flag = -1;
+}
+
+
+
+//void prob_print_elem( char *chr, prob_elem * pb, char *mark, int length )
+void prob_print_elem( int length )
+{
+    int i = 0, j = 0;
+
+    //fprintf( stderr, "%s\t%09d\t%c\t(", chr, pb->pos, pb->base );
+ 
+    prob_elem * pb = pw.head;
+
+    while( pb != NULL )
+    { 
+        fprintf( stderr, "%d(%p)\t(", pb->id, pb );
+
+        for( i = 0; i < pw.size ; i++ )
+        {
+            fprintf( stderr, "%2d ", pb->maq[READ1][i]);
+        }
+        fprintf( stderr, ")\n");
+        pb = pb->next;
+     }
+}
+
+
+void prob_init_window( int length, float buf_for_pacbio )
+{
+    int i = 0;
+    int id = 1;
+    prob_elem * tmp;
+
+    pw.cov = 0;
+    pw.prev_pos = 0; // the position that we expect
+    pw.size = 100 * buf_for_pacbio;
+     
+    pw.head = malloc( sizeof( prob_elem ) );
+    memset( pw.head, 0, sizeof( prob_elem ) );
+
+    prob_init_elem( pw.head, length );
+    pw.head->id = id++;
+    fprintf( stderr, "%s head id : %p(%d)\n", INFO_009, pw.head, pw.head->id );
+ 
+    tmp = pw.head;
+    
+    //for( i = 0; i < (100*buf_for_pacbio - 2); i++ )  // to make coverage 100x + buffer
+    for( i = 0; i < (pw.size- 1); i++ )  // to make coverage 100x + buffer
+    {
+        tmp->next = malloc( sizeof( prob_elem ) );
+        tmp = tmp->next;
+        //tmp->id = id++;
+        tmp->id = i+2;
+
+        tmp->next = NULL;
+
+        //prob_init_elem( tmp, length, buf_for_pacbio );
+        prob_init_elem( tmp, length );
+        fprintf( stderr, "%s tmp: %p(%d)\n", INFO_010, tmp, tmp->id );
+    }    
+
+    pw.tail = pw.head;
+
+    prob_print_elem(length);
+
+//fprintf( stderr, "length : %d\n", length );
+
+//    printf("[head] %p\n", pw.head );
+//    printf("[tail] %p\n", pw.tail );
+
+//    tmp = pw.head;
+
+//    for( i = 0; i < length; i++ )
+//    {
+//        printf("[%d] %p->%p\n", i, tmp, tmp->next );
+//        tmp = tmp->next;
+//    }
+
+}
+
+
+void prob_destroy_window( )
+{
+    int i = 0;
+    prob_elem * tmp2 = pw.head;
+    prob_elem * tmp1 = pw.head;
+
+    for( i = 0; i < pw.cov; i++ )
+    {
+        free( tmp2 );
+        tmp2 = tmp1->next;
+        tmp1 = tmp1->next;
+    }
+   
+    pw.cov = 0;
+    pw.head = NULL;
+    pw.tail = NULL; 
+}
+
+*/
+
+void circulate_window_list( prob_elem * hd, int read, char *chr, int pos1, int pos2, int length )
+{
+    int i = 0, j = 0;
+    int qual = 0;
+    int cvg = 0;
+    int p = 0;
+    double p_err = 0.0;
+    double p_acc = 0.0;
+    double gms = 0.0;
+    prob_elem * elem = pw.head;
+
+    for( i = pos1-1; i < pos2-1; i++ )
+    {
+        elem = pw.head;
+        p_acc = 0.0;
+        p_err = 0.0;
+        gms = 0.0;
+        cvg = 0;
+        p = i + elem->pos;
+
+        fprintf( stderr, "%s i(%d)+elem->pos(%d)=p(%d), pw.size(%d)\n", INFO_011, i, elem->pos, p, pw.size );
+
+        //if( ( pw.cov > 0 ) && ( p >= elem->size ) )
+        if( ( pw.cov > 0 ) && ( p > pw.size ) )
+        {
+            fprintf( stderr, "%s i(%d)+elem->pos(%d)=%d\n", INFO_012, i, elem->pos, p );
+
+            elem = pw.head->next;
+
+            prob_init_elem( pw.head, length );
+            pw.tail->next = pw.head; 
+            pw.cov--;
+            p = i + 1 - elem->pos;
+        }
+       
+        fprintf( stderr, "%s pw.head->id(%d), pw.tail->id(%d), pw.cov(%d)\n", INFO_013, pw.head->id, pw.tail->id, pw.cov );
+
+        for( j = 0; j < pw.cov; j++ )
+        {
+            fprintf( stderr, "%s elem(%p), elem->id: %d\n", INFO_014, elem, elem->id );
+            qual = elem->maq[read][p];         
+            p_err = pow( (double)0.1, (qual/10.0) );
+            p_acc += (1 - p_err);
+            if( qual > 0 )
+            {
+                cvg++;
+            }
+            fprintf( stderr, "%s org_pos:%d, pos:%d(%d/%d), qual[%d]:%d, p_err:%.4f, acc:%.4f\n", 
+                              INFO_015, elem->pos, i+1, p, pw.size, read, elem->maq[read][p] , p_err, p_acc );
+            elem = elem->next;
+        }
+
+        if( pw.cov <= 0 )
+        {
+            gms = 0.0;
+            pw.cov = 0;
+        }
+        else 
+        {
+            gms = (p_acc / pw.cov) * 100;
+        }
+
+        if(  pw.tail->pos == (i + 1)  )
+        { 
+            fprintf( stderr, "%s\t%09d\t%c\t%d(%d)\t%.2f\n", chr, i+1, pw.tail->base, pw.cov, cvg, gms );
+            fprintf( stdout, "%s\t%09d\t%c\t%d(%d)\t%.2f\n", chr, i+1, pw.tail->base, pw.cov, cvg, gms );
+        }
+        else
+        {
+            fprintf( stderr, "%s\t%09d\t%c\t%d(%d)\t%.2f\n", chr, i+1, '*', pw.cov, cvg, gms );
+            fprintf( stdout, "%s\t%09d\t%c\t%d(%d)\t%.2f\n", chr, i+1, '*', pw.cov, cvg, gms );
+        }
+    }
+}
+
+/*
+void cleanup_window_list( prob_elem * hd, int read, char *chr, int pos1, int pos2 )
+{
+    int i = 0, j = 0;
+    int qual = 0;
+    int cvg = 0;
+
+    double p_err = 0.0;
+    double p_acc = 0.0;
+    double gms = 0.0;
+
+    prob_elem * elem = pw.head;
+
+    for( i = pos1-1; i < pos2-1; i++ )
+    {
+        //fprintf( stderr, "[INFO:020] i+1: %d, elem->pos + elem->size: %d\n", i+1, elem->pos + elem->size );
+    
+        if( (i+1) < (pw.head->pos + pw.size) ) 
+        {
+            // do nothingn
+        }
+        else
+        {
+            pw.head = pw.head->next;
+            elem = pw.head;
+            pw.cov--;
+        }
+    
+
+        for( j = 0; j < pw.cov; j++ )
+        {
+            qual = elem->maq[read][i+1- elem->pos];         
+            p_err = pow( (double)0.1, (qual/10.0) );
+            p_acc += (1 - p_err);
+            if( qual > 0 )
+            {
+                cvg++;
+            }
+    
+            elem = elem->next;
+        }
+    
+        if( pw.cov <= 0 )
+        {
+            gms = 0.0;
+            pw.cov = 0;
+        }
+        else
+        {
+            gms = (p_acc / pw.cov) * 100;
+        }
+     
+        if(  pw.tail->pos == (i + 1)  )
+        { 
+            fprintf( stderr, "%s\t%09d\t%c\t%d(%d)\t%.2f\n", chr, i+1, pw.tail->base, pw.cov, cvg, gms );
+            fprintf( stdout, "%s\t%09d\t%c\t%d(%d)\t%.2f\n", chr, i+1, pw.tail->base, pw.cov, cvg, gms );
+        }
+        else
+        { 
+            fprintf( stderr, "%s\t%09d\t%c\t%d(%d)\t%.2f\n", chr, i+1, '*', pw.cov, cvg, gms );
+            fprintf( stdout, "%s\t%09d\t%c\t%d(%d)\t%.2f\n", chr, i+1, '*', pw.cov, cvg, gms );
+        }
+    
+        elem = pw.head;
+        p_acc = 0.0;
+        p_err = 0.0;
+        gms = 0.0;
+        cvg = 0;
+       
+    }
+}
+
+
+*/
+
+
+void compute_gms( prob_elem * head, char *chr, int pos1, int pos2, int length )
+{
+    circulate_window_list( head, READ1, chr, pos1, pos2, length );
+}
+
+
+void prob_fill_elem( prob_elem * pb, 
+                     int org_pos, int fnd_pos1, int fnd_pos2,
+                     char base, int read, int qual, int flag  )
+{
+
+    int i = 0;
+    
+    pb->pos = org_pos; 
+    pb->base = base; 
+
+    if( ( flag & 0x0040 ) || ( flag & 0x0080 ) )
+    {
+        //pb->base = base; 
+/*
+        if( read == READ1 ) 
+        {
+            if( pb->maq[READ1][FST] == -1 )
+            { 
+                pb->flag[READ1][FST] = flag;
+                fill_qual_flag( pb, READ1, FST, qual, flag );
+            }
+            else
+            {
+                pb->flag[READ1][SND] = flag;
+                fill_qual_flag( pb, READ1, SND, qual, flag );
+            }
+        }
+        else if( read == READ2 ) 
+        {
+            if( pb->maq[READ2][FST] == -1 )
+
+            { 
+                pb->flag[READ2][FST] = flag;
+                fill_qual_flag( pb, READ2, FST, qual, flag );
+            }
+            else
+            {
+                pb->flag[READ2][SND] = flag;
+                fill_qual_flag( pb, READ2, SND, qual, flag );
+            }
+        }
+        else
+        {  
+            fprintf( stderr, "[ERROR:005] prob_long_check_fill_elem: read not first, not second\n" );
+        }
+*/
+    }
+    else if( ( flag & 0x10 ) || ( flag == 0 ) )  // if flag == 0, it's single end read or cannot  know which read if comes from if paired-end read
+    {
+        if( pb->flag == -1 )
+        {
+            // first time
+            fprintf( stderr, "%s fill [%d,%d] with qual(%d)\n", INFO_016, fnd_pos1-org_pos, fnd_pos2-org_pos, qual );
+
+            for( i = (fnd_pos1-org_pos); i < (fnd_pos2-org_pos+1) ; i++ )
+            {
+
+                if ( pb->maq[READ1][i] != 0 )
+                {
+                     pb->maq[READ1][i] = (pb->maq[READ1][i] + qual)/2;
+                }
+                else 
+                {
+                     pb->maq[READ1][i] = qual;
+                }
+            }
+        }
+/*        if( ( pb->flag[READ1][FST] == -1 ) || ( pw.prev_pos == pos ) )
+        { 
+            pb->flag[READ1][FST] = flag;
+            fill_qual_flag( pb, READ1, FST,  qual, flag );
+        }
+        else if( pb->flag[READ2][FST] == -1 ) 
+        {
+            pb->flag[READ2][FST] = flag;
+            fill_qual_flag( pb, READ2, FST, qual, flag );
+        }
+        else if( pb->flag[READ1][SND] == -1 )  
+        { 
+            pb->flag[READ1][SND] = flag;
+            fill_qual_flag( pb, READ1, SND,  qual, flag );
+        }
+        else if( pb->flag[READ2][SND] == -1 ) 
+        {
+            pb->flag[READ2][SND] = flag;
+            fill_qual_flag( pb, READ2, SND, qual, flag );
+        }
+*/
+        else
+        {
+            fprintf( stderr, "[ERROR:004] prob_long_check_fill_elem: flag: not first, not second\n" );
+        }
+    }
+}
+
+void prob_long_check_fill_elem( prob_elem * pb, 
+                           char *chr, int org_pos, int fnd_pos1, int fnd_pos2, 
+                           char base, int read, int qual, int flag, int length  )
+{
+
+    fprintf( stderr, "%s pw.head->pos:%d pw.tail->pos:%d, org_pos:%d\n", INFO_017, pw.head->pos, pw.tail->pos, org_pos );
+    
+    if( pw.head->pos == 0 )  
+    {
+        prob_fill_elem( pw.head, org_pos, fnd_pos1, fnd_pos2, base, read, qual, flag );
+        pw.cov++;
+        pw.tail = pw.head;
+        fprintf( stderr, "%s case 1: pw.cov:%d (%d - %d)\n", INFO_018, pw.cov, pw.head->pos, pw.tail->pos );
+    }
+    else// if( pw.head->pos != 0 )
+    {
+        if( pw.tail->pos == org_pos) 
+        {
+            prob_fill_elem( pw.tail, org_pos, fnd_pos1, fnd_pos2, base, read, qual, flag );
+            fprintf( stderr, "%s case 2: pw.cov:%d (%d - %d)\n", INFO_019, pw.cov, pw.head->pos, pw.tail->pos );
+        }
+        else if( pw.tail->pos < org_pos )
+        {    
+            fprintf( stderr, "%s pw.tail->next: %p, pw.head->pos: %d, pw.head->size:%d\n",
+                              INFO_020, pw.tail->next, pw.head->pos, pw.size );
+
+            if( pw.cov < (int)(100*pw.size) )
+            {
+                prob_fill_elem( pw.tail->next, org_pos, fnd_pos1, fnd_pos2, base, read, qual, flag );
+                pw.tail = pw.tail->next;
+                pw.cov++;
+                fprintf( stderr, "%s case 3: pw.cov:%d (%d - %d), pw.tail->id: %d\n", INFO_022, pw.cov, pw.head->pos, pw.tail->pos, pw.tail->id );
+            }
+            else //if( (pw.head->pos + pw.head->size) <= org_pos )
+            {
+                prob_init_elem( pw.head, length );
+                pw.tail->next = pw.head; 
+                //pw.tail = pw.tail->next;
+                pw.head = pw.head->next;
+
+                prob_fill_elem( pw.tail->next, org_pos, fnd_pos1, fnd_pos2, base, read, qual, flag );
+                pw.tail = pw.tail->next;
+                fprintf( stderr, "%s case 4: pw.cov:%d (%d - %d), pw.tail->id:%d \n", INFO_023, pw.cov, pw.head->pos, pw.tail->pos, pw.tail->id );
+            }
+        }
+        else
+        {
+            fprintf( stderr, "[INFO:MUST] case 5: pw.cov:%d, pw.tail->pos:%d, org_pos:%d\n", pw.cov, pw.tail->pos, org_pos );
+
+        }
+    }
+    // for debuging
+    prob_print_elem( length );
+}
+
+int prob_fill_window( FILE * output, int distance, char *chr, 
+                      int org_pos, int fnd_pos1, int fnd_pos2, 
+                      char base, int flag, int qual, int length )
+{
+    fprintf( stderr, "%s chr: %s, pos:%d(%d-%d), base: %c, flag: 0x%x qual: %d\n", 
+                     INFO_024, chr, org_pos, fnd_pos1, fnd_pos2, base, flag, qual );
+
+    if( ( flag & 0x0040 ) && ( pw.head->maq[READ1][FST] == -1 ) ) // the first read1
+    {
+        prob_long_check_fill_elem( pw.head, chr, org_pos, fnd_pos1, fnd_pos2, base, READ1, qual, flag, length );
+    }
+    else if( (flag & 0x0040) && ( pw.head->maq[READ1][FST] != -1 ) ) // the second read1
+    {
+        prob_long_check_fill_elem( pw.head, chr, org_pos, fnd_pos1, fnd_pos2, base, READ1, qual, flag, length );
+    }
+    else if( ( flag & 0x0080 ) && ( pw.head->maq[READ2][FST] == -1 ) ) // the first read2
+    {
+        prob_long_check_fill_elem( pw.head, chr, org_pos, fnd_pos1, fnd_pos2, base, READ2, qual, flag, length );
+    }
+    else if( (flag & 0x0080) && ( pw.head->maq[READ2][FST] != -1 ) ) // the second read2
+    {
+        prob_long_check_fill_elem( pw.head, chr, org_pos, fnd_pos1, fnd_pos2, base, READ2, qual, flag, length );
+    }
+    else if( ( flag == 0 ) || ( flag & 0x10 ) )// single-end read
+    {
+        fprintf( stderr, "%s pos:(%s)%d-%d(%c), flag:0x%x(single-end) qual: %d\n", INFO_021, chr, fnd_pos1, fnd_pos2, base, flag, qual);
+        prob_long_check_fill_elem( pw.head, chr, org_pos, fnd_pos1, fnd_pos2, base, -1, qual, flag, length );
+    }
+    else if( ( fnd_pos1 - pw.head->pos ) == 1 )
+    {
+        fprintf( stderr, "[ERROR] here\n" );
+        prob_long_check_fill_elem( pw.head, chr, org_pos, fnd_pos1, fnd_pos2, base, -1, qual, flag, length );  //flag
+    }
+    else
+    {
+        fprintf( stderr, "[ERROR] here\n" );
+    }
+
+    return 0;
+}
+
+
+    
+int prob_move_window( FILE * output, int distance, char *org_chr, 
+                      int org_pos, int pos1, int pos2, 
+                      char base, int flag, int qual, int length )
+{
+    compute_gms( pw.head, org_chr, pos1, pos2, length );
+
+    return 0;
+}
+/*
+void prob_clean_windows( FILE * output, char * org_chr, int org_pos, int length )
+{
+    cleanup_window_list( pw.head, READ1, org_chr, org_pos, ( org_pos + pw.size ) );
+}
+
+*/

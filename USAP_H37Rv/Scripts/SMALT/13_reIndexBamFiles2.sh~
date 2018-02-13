@@ -1,0 +1,42 @@
+/home/ndc/USAP/Tools/samtools-1.3/samtools index /home/ndc/single_col_out/Results/SMALT/Alignment_Files/R1035-C11_trim_smalt_sort_RG_realigned_resorted_dedup.bam &
+/home/ndc/USAP/Tools/samtools-1.3/samtools index /home/ndc/single_col_out/Results/SMALT/Alignment_Files/R1035-C1_trim_smalt_sort_RG_realigned_resorted_dedup.bam &
+/home/ndc/USAP/Tools/samtools-1.3/samtools index /home/ndc/single_col_out/Results/SMALT/Alignment_Files/R1035-C8_trim_smalt_sort_RG_realigned_resorted_dedup.bam &
+/home/ndc/USAP/Tools/samtools-1.3/samtools index /home/ndc/single_col_out/Results/SMALT/Alignment_Files/R1415-C1_trim_smalt_sort_RG_realigned_resorted_dedup.bam &
+/home/ndc/USAP/Tools/samtools-1.3/samtools index /home/ndc/single_col_out/Results/SMALT/Alignment_Files/R1415-C3_trim_smalt_sort_RG_realigned_resorted_dedup.bam &
+/home/ndc/USAP/Tools/samtools-1.3/samtools index /home/ndc/single_col_out/Results/SMALT/Alignment_Files/R1415-C4_trim_smalt_sort_RG_realigned_resorted_dedup.bam &
+/home/ndc/USAP/Tools/samtools-1.3/samtools index /home/ndc/single_col_out/Results/SMALT/Alignment_Files/R160-C13_trim_smalt_sort_RG_realigned_resorted_dedup.bam
+/home/ndc/USAP/Tools/samtools-1.3/samtools index /home/ndc/single_col_out/Results/SMALT/Alignment_Files/R160-C3_trim_smalt_sort_RG_realigned_resorted_dedup.bam &
+/home/ndc/USAP/Tools/samtools-1.3/samtools index /home/ndc/single_col_out/Results/SMALT/Alignment_Files/R160-C7_trim_smalt_sort_RG_realigned_resorted_dedup.bam &
+/home/ndc/USAP/Tools/samtools-1.3/samtools index /home/ndc/single_col_out/Results/SMALT/Alignment_Files/R376-C11_trim_smalt_sort_RG_realigned_resorted_dedup.bam &
+/home/ndc/USAP/Tools/samtools-1.3/samtools index /home/ndc/single_col_out/Results/SMALT/Alignment_Files/R376-C5_trim_smalt_sort_RG_realigned_resorted_dedup.bam &
+/home/ndc/USAP/Tools/samtools-1.3/samtools index /home/ndc/single_col_out/Results/SMALT/Alignment_Files/R376-C8_trim_smalt_sort_RG_realigned_resorted_dedup.bam &
+/home/ndc/USAP/Tools/samtools-1.3/samtools index /home/ndc/single_col_out/Results/SMALT/Alignment_Files/R458-C3_trim_smalt_sort_RG_realigned_resorted_dedup.bam &
+/home/ndc/USAP/Tools/samtools-1.3/samtools index /home/ndc/single_col_out/Results/SMALT/Alignment_Files/R458-C4_trim_smalt_sort_RG_realigned_resorted_dedup.bam
+/home/ndc/USAP/Tools/samtools-1.3/samtools index /home/ndc/single_col_out/Results/SMALT/Alignment_Files/R458-C6_trim_smalt_sort_RG_realigned_resorted_dedup.bam &
+/home/ndc/USAP/Tools/samtools-1.3/samtools index /home/ndc/single_col_out/Results/SMALT/Alignment_Files/R486-C10_trim_smalt_sort_RG_realigned_resorted_dedup.bam &
+/home/ndc/USAP/Tools/samtools-1.3/samtools index /home/ndc/single_col_out/Results/SMALT/Alignment_Files/R486-C1_trim_smalt_sort_RG_realigned_resorted_dedup.bam &
+/home/ndc/USAP/Tools/samtools-1.3/samtools index /home/ndc/single_col_out/Results/SMALT/Alignment_Files/R631-C2_trim_smalt_sort_RG_realigned_resorted_dedup.bam &
+/home/ndc/USAP/Tools/samtools-1.3/samtools index /home/ndc/single_col_out/Results/SMALT/Alignment_Files/R631-C3_trim_smalt_sort_RG_realigned_resorted_dedup.bam &
+/home/ndc/USAP/Tools/samtools-1.3/samtools index /home/ndc/single_col_out/Results/SMALT/Alignment_Files/R631-C9_trim_smalt_sort_RG_realigned_resorted_dedup.bam &
+/home/ndc/USAP/Tools/samtools-1.3/samtools index /home/ndc/single_col_out/Results/SMALT/Alignment_Files/R637-C10_trim_smalt_sort_RG_realigned_resorted_dedup.bam
+/home/ndc/USAP/Tools/samtools-1.3/samtools index /home/ndc/single_col_out/Results/SMALT/Alignment_Files/R637-C5_trim_smalt_sort_RG_realigned_resorted_dedup.bam &
+/home/ndc/USAP/Tools/samtools-1.3/samtools index /home/ndc/single_col_out/Results/SMALT/Alignment_Files/R637-C8_trim_smalt_sort_RG_realigned_resorted_dedup.bam &
+/home/ndc/USAP/Tools/samtools-1.3/samtools index /home/ndc/single_col_out/Results/SMALT/Alignment_Files/R641-C1_trim_smalt_sort_RG_realigned_resorted_dedup.bam &
+/home/ndc/USAP/Tools/samtools-1.3/samtools index /home/ndc/single_col_out/Results/SMALT/Alignment_Files/R641-C4_trim_smalt_sort_RG_realigned_resorted_dedup.bam &
+/home/ndc/USAP/Tools/samtools-1.3/samtools index /home/ndc/single_col_out/Results/SMALT/Alignment_Files/R641-C6_trim_smalt_sort_RG_realigned_resorted_dedup.bam &
+/home/ndc/USAP/Tools/samtools-1.3/samtools index /home/ndc/single_col_out/Results/SMALT/Alignment_Files/R721-C13_trim_smalt_sort_RG_realigned_resorted_dedup.bam &
+/home/ndc/USAP/Tools/samtools-1.3/samtools index /home/ndc/single_col_out/Results/SMALT/Alignment_Files/R721-C14_trim_smalt_sort_RG_realigned_resorted_dedup.bam
+/home/ndc/USAP/Tools/samtools-1.3/samtools index /home/ndc/single_col_out/Results/SMALT/Alignment_Files/R721-C1_trim_smalt_sort_RG_realigned_resorted_dedup.bam &
+/home/ndc/USAP/Tools/samtools-1.3/samtools index /home/ndc/single_col_out/Results/SMALT/Alignment_Files/R810-C14_trim_smalt_sort_RG_realigned_resorted_dedup.bam &
+/home/ndc/USAP/Tools/samtools-1.3/samtools index /home/ndc/single_col_out/Results/SMALT/Alignment_Files/R810-C15_trim_smalt_sort_RG_realigned_resorted_dedup.bam &
+/home/ndc/USAP/Tools/samtools-1.3/samtools index /home/ndc/single_col_out/Results/SMALT/Alignment_Files/R810-C3_trim_smalt_sort_RG_realigned_resorted_dedup.bam &
+/home/ndc/USAP/Tools/samtools-1.3/samtools index /home/ndc/single_col_out/Results/SMALT/Alignment_Files/R810-C9_trim_smalt_sort_RG_realigned_resorted_dedup.bam &
+/home/ndc/USAP/Tools/samtools-1.3/samtools index /home/ndc/single_col_out/Results/SMALT/Alignment_Files/R912-C11_trim_smalt_sort_RG_realigned_resorted_dedup.bam &
+/home/ndc/USAP/Tools/samtools-1.3/samtools index /home/ndc/single_col_out/Results/SMALT/Alignment_Files/R912-C12_trim_smalt_sort_RG_realigned_resorted_dedup.bam
+/home/ndc/USAP/Tools/samtools-1.3/samtools index /home/ndc/single_col_out/Results/SMALT/Alignment_Files/R912-C1_trim_smalt_sort_RG_realigned_resorted_dedup.bam &
+/home/ndc/USAP/Tools/samtools-1.3/samtools index /home/ndc/single_col_out/Results/SMALT/Alignment_Files/R965-C1_trim_smalt_sort_RG_realigned_resorted_dedup.bam &
+/home/ndc/USAP/Tools/samtools-1.3/samtools index /home/ndc/single_col_out/Results/SMALT/Alignment_Files/R965-C8_trim_smalt_sort_RG_realigned_resorted_dedup.bam &
+/home/ndc/USAP/Tools/samtools-1.3/samtools index /home/ndc/single_col_out/Results/SMALT/Alignment_Files/R966-C11_trim_smalt_sort_RG_realigned_resorted_dedup.bam &
+/home/ndc/USAP/Tools/samtools-1.3/samtools index /home/ndc/single_col_out/Results/SMALT/Alignment_Files/R966-C13_trim_smalt_sort_RG_realigned_resorted_dedup.bam &
+/home/ndc/USAP/Tools/samtools-1.3/samtools index /home/ndc/single_col_out/Results/SMALT/Alignment_Files/R966-C5_trim_smalt_sort_RG_realigned_resorted_dedup.bam
+wait

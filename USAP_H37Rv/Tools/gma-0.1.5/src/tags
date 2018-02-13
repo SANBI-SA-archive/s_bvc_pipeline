@@ -1,0 +1,262 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+AC_KSEQ_H	kseq.h	31;"	d
+ARGC_MAX	analyzer_common.h	6;"	d
+ARGC_MAX	main_mapper.c	177;"	d	file:
+BASES_PER_LINE	genfa.c	12;"	d	file:
+BASES_PER_LINE_MAX	genfa.c	13;"	d	file:
+BOUNDARY_LEN	runall.c	21;"	d	file:
+BPL	tech_map.c	56;"	d	file:
+BUF_SIZE	analyzer_common.h	7;"	d
+BUF_SIZE	genfa.c	16;"	d	file:
+CC	Makefile	/^CC=	gcc$/;"	m
+CFLAGS	Makefile	/^CFLAGS=	-g -Wall $/;"	m
+CFLAGS	Makefile	/^CFLAGS=	-g -Wall -DNERSC$/;"	m
+DEL	tech_map.c	55;"	d	file:
+DEL	tech_red.c	59;"	d	file:
+ERR_000	resource.h	40;"	d
+ERR_001	resource.h	41;"	d
+ERR_002	resource.h	42;"	d
+ERR_003	resource.h	43;"	d
+ERR_004	resource.h	44;"	d
+ERR_005	resource.h	45;"	d
+ERR_006	resource.h	46;"	d
+ERR_007	resource.h	47;"	d
+ERR_008	resource.h	48;"	d
+ERR_009	resource.h	49;"	d
+FALSE	main_mapper.c	21;"	d	file:
+FALSE	runall.c	18;"	d	file:
+FALSE	tech_map.c	17;"	d	file:
+FALSE	tech_red.c	17;"	d	file:
+FILE_OPT_O	runall.c	15;"	d	file:
+FILE_OPT_O	tech_map.c	14;"	d	file:
+FILE_OPT_O	tech_red.c	14;"	d	file:
+FILE_OPT_S	runall.c	16;"	d	file:
+FILE_OPT_S	tech_map.c	15;"	d	file:
+FILE_OPT_S	tech_red.c	15;"	d	file:
+FQ_MAX_LEN	genfq.c	15;"	d	file:
+FST	prob_common.h	11;"	d
+IDX	tech_map.c	57;"	d	file:
+INFO_000	resource.h	4;"	d
+INFO_001	resource.h	5;"	d
+INFO_002	resource.h	6;"	d
+INFO_003	resource.h	7;"	d
+INFO_004	resource.h	8;"	d
+INFO_005	resource.h	9;"	d
+INFO_006	resource.h	10;"	d
+INFO_007	resource.h	11;"	d
+INFO_008	resource.h	12;"	d
+INFO_009	resource.h	13;"	d
+INFO_010	resource.h	14;"	d
+INFO_011	resource.h	15;"	d
+INFO_012	resource.h	16;"	d
+INFO_013	resource.h	17;"	d
+INFO_015	resource.h	19;"	d
+INFO_016	resource.h	20;"	d
+INFO_017	resource.h	21;"	d
+INFO_018	resource.h	22;"	d
+INFO_019	resource.h	23;"	d
+INFO_020	resource.h	24;"	d
+INFO_021	resource.h	25;"	d
+INFO_022	resource.h	26;"	d
+INFO_023	resource.h	27;"	d
+INFO_024	resource.h	28;"	d
+INFO_025	resource.h	29;"	d
+INFO_026	resource.h	30;"	d
+INFO_027	resource.h	31;"	d
+INFO_028	resource.h	32;"	d
+INFO_029	resource.h	33;"	d
+INFO_030	resource.h	34;"	d
+INFO_031	resource.h	35;"	d
+INFO_032	resource.h	36;"	d
+INS	tech_map.c	54;"	d	file:
+INS	tech_red.c	58;"	d	file:
+KSEQ_INIT	genfq.c	/^KSEQ_INIT( gzFile, gzread )$/;"	f
+KSEQ_INIT	kseq.h	217;"	d
+KSEQ_INIT	kseq_test.c	/^KSEQ_INIT(gzFile, gzread)$/;"	f
+KSTREAM_INIT	kseq.h	139;"	d
+KSTRING_T	kseq.h	81;"	d
+KS_SEP_MAX	kseq.h	39;"	d
+KS_SEP_SPACE	kseq.h	37;"	d
+KS_SEP_TAB	kseq.h	38;"	d
+LDFLAGS	Makefile	/^LDFLAGS=	-L..\/lib$/;"	m
+LEN	tech_map.c	52;"	d	file:
+LEN	tech_red.c	56;"	d	file:
+LIBS	Makefile	/^LIBS=	-lz -lbam -lm 	$/;"	m
+NUM_LINE	genfa.c	14;"	d	file:
+OBJS_MAP	Makefile	/^OBJS_MAP=	main_mapper.o genfa.o extract.o genfq.o runall.o tech_map.o$/;"	m
+OBJS_RED	Makefile	/^OBJS_RED=	main_reducer.o analyzer_common.o analyzer_short.o analyzer_long.o prob_common.o prob_short.o prob_long.o tech_red.o$/;"	m
+OVERLAY	genfa.c	15;"	d	file:
+PRG	tech_map.c	58;"	d	file:
+READ1	prob_common.h	8;"	d
+READ2	prob_common.h	9;"	d
+SND	prob_common.h	12;"	d
+SUB	tech_map.c	53;"	d	file:
+SUB	tech_red.c	57;"	d	file:
+TEC	tech_map.c	51;"	d	file:
+TECH	tech_red.c	60;"	d	file:
+TRUE	main_mapper.c	20;"	d	file:
+TRUE	runall.c	19;"	d	file:
+TRUE	tech_map.c	18;"	d	file:
+TRUE	tech_red.c	18;"	d	file:
+USAGE_CMD	main_mapper.c	29;"	d	file:
+USAGE_ITR	main_mapper.c	28;"	d	file:
+USAGE_OPT	main_mapper.c	30;"	d	file:
+VERSION_BUILD	main_reducer.c	20;"	d	file:
+VERSION_BUILD	version.h	7;"	d
+VERSION_MAJOR	main_reducer.c	18;"	d	file:
+VERSION_MAJOR	version.h	5;"	d
+VERSION_MINOR	main_reducer.c	19;"	d	file:
+VERSION_MINOR	version.h	6;"	d
+_ANALYZER_SHORT_H_	analyzer_short.h	2;"	d
+_ANLAYZER_LONG_H_	analyzer_long.h	2;"	d
+_MAIN_MAPPER_H_	main_mapper.h	2;"	d
+_PROB_COMMON_H	prob_common.h	2;"	d
+_PROB_SHORT_H	prob_long.h	2;"	d
+_PROB_SHORT_H	prob_short.h	2;"	d
+_TEHC_RED_H_	tech_red.h	2;"	d
+__ANALYZER_COMMON_H_	analyzer_common.h	2;"	d
+__KSEQ_BASIC	kseq.h	145;"	d
+__KSEQ_READ	kseq.h	170;"	d
+__KSEQ_TYPE	kseq.h	210;"	d
+__KS_BASIC	kseq.h	51;"	d
+__KS_GETC	kseq.h	67;"	d
+__KS_GETUNTIL	kseq.h	92;"	d
+__KS_TYPE	kseq.h	41;"	d
+__RESOURCE_H_	resource.h	2;"	d
+__VERSION_H__	version.h	2;"	d
+__kstring_t	kseq.h	/^typedef struct __kstring_t {$/;"	s
+_prob_elem	prob_common.h	/^typedef struct _prob_elem$/;"	s
+_prob_window	prob_common.h	/^typedef struct _prob_window$/;"	s
+anal_t	extract.c	/^} anal_t;  $/;"	t	typeref:struct:__anon2	file:
+anal_t	mapper.c	/^} anal_t;  $/;"	t	typeref:struct:__anon1	file:
+analyzer_by_tech	tech_red.c	/^int analyzer_by_tech(int argc, char *argv[])  $/;"	f
+analyzer_long	analyzer_long.c	/^void analyzer_long(int argc, char *argv[])  $/;"	f
+analyzer_short	analyzer_short.c	/^void analyzer_short(int argc, char *argv[])  $/;"	f
+base	prob_common.h	/^    char base;$/;"	m	struct:_prob_elem
+beg	extract.c	/^    int beg, end;  $/;"	m	struct:__anon2	file:
+beg	mapper.c	/^    int beg, end;  $/;"	m	struct:__anon1	file:
+bpl	tech_map.c	/^char bpl[256] = { 0, };$/;"	v
+bpl	tech_red.c	/^char bpl[256] = { 0, };$/;"	v
+call_analyzer	tech_red.c	/^void call_analyzer()$/;"	f
+circulate_window_list	prob_long.c	/^static void circulate_window_list( prob_elem * hd, int read, char *chr, int fnd_pos1, int fnd_pos2 )$/;"	f	file:
+circulate_window_list	prob_short.c	/^static void circulate_window_list( prob_elem * hd, int read, char *chr, int fnd_pos1, int fnd_pos2, int length )$/;"	f	file:
+cleanup_window_list	prob_long.c	/^static void cleanup_window_list( prob_elem * hd, int read, char *chr, int pos1, int pos2 )$/;"	f	file:
+cleanup_window_list	prob_short.c	/^static void cleanup_window_list( prob_elem * hd, int read, char *chr, int pos1, int pos2 )$/;"	f	file:
+compute_gms	prob_short.c	/^static void compute_gms( prob_elem * head, char *chr, int fnd_pos1, int fnd_pos2, int length )$/;"	f	file:
+counter	extract.c	/^static int counter = 0;$/;"	v	file:
+del	tech_map.c	/^char del[16] = { 0, };$/;"	v
+del	tech_red.c	/^char del[16] = { 0, };$/;"	v
+end	extract.c	/^    int beg, end;  $/;"	m	struct:__anon2	file:
+end	mapper.c	/^    int beg, end;  $/;"	m	struct:__anon1	file:
+extract	extract.c	/^int extract( int argc, char *argv[] )$/;"	f
+extract	mapper.c	/^int extract( int argc, char *argv[] )$/;"	f
+filled	prob_common.h	/^    int filled;$/;"	m	struct:_prob_window
+find_chr	extract.c	/^int find_chr( char *name, kseq_t *seq, char *chr )$/;"	f
+find_chr	mapper.c	/^int find_chr( char *name, kseq_t *seq, char *chr )$/;"	f
+flag	prob_common.h	/^    int  flag;$/;"	m	struct:_prob_elem
+genfa	genfa.c	/^int genfa(int argc, char *argv[] ) \/\/, int length)$/;"	f
+genfq	genfq.c	/^void genfq(int argc, char *argv[])$/;"	f
+get_cigar	extract.c	/^void get_cigar( int num, char *op, int *len ) $/;"	f
+get_info	analyzer_common.c	/^void get_info( char * input, $/;"	f
+get_output_name	genfq.c	/^void get_output_name( char * buf )$/;"	f
+head	prob_common.h	/^    prob_elem * head;$/;"	m	struct:_prob_window
+id	prob_common.h	/^    int id;$/;"	m	struct:_prob_elem
+idx	tech_map.c	/^char idx[256] = { 0, };$/;"	v
+idx	tech_red.c	/^char idx[256] = { 0, };$/;"	v
+in	extract.c	/^    samfile_t *in;  $/;"	m	struct:__anon2	file:
+in	mapper.c	/^    samfile_t *in;  $/;"	m	struct:__anon1	file:
+ins	tech_map.c	/^char ins[16] = { 0, };$/;"	v
+ins	tech_red.c	/^char ins[16] = { 0, };$/;"	v
+int2bit	extract.c	/^void int2bit(int num)$/;"	f
+is_same_chr	analyzer_common.c	/^bool is_same_chr( char* chr1, char *chr2 )$/;"	f
+kroundup32	kseq.h	89;"	d
+ks_eof	kseq.h	48;"	d
+ks_rewind	kseq.h	49;"	d
+kstring_t	kseq.h	/^} kstring_t;$/;"	t	typeref:struct:__kstring_t
+l	kseq.h	/^	size_t l, m;$/;"	m	struct:__kstring_t
+len	tech_map.c	/^char len[16] = { 0, };$/;"	v
+len	tech_red.c	/^char len[16] = { 0, };$/;"	v
+length	prob_common.h	/^    int length;$/;"	m	struct:_prob_window
+long_options	tech_map.c	/^static struct option long_options[] = $/;"	v	typeref:struct:option	file:
+long_options	tech_red.c	/^static struct option long_options[] = $/;"	v	typeref:struct:option	file:
+m	kseq.h	/^	size_t l, m;$/;"	m	struct:__kstring_t
+main	main_mapper.c	/^int main( int argc, char *argv[] )$/;"	f
+main	main_reducer.c	/^int main( int argc, char *argv[] )$/;"	f
+main	null_red.py	/^def main() : $/;"	f
+make_complement_reverse	genfq.c	/^void make_complement_reverse( char *rev, char *seq, int length )$/;"	f
+mapper	mapper.c	/^void mapper( char *ref, int length, int start_base_pos, const char *bam )$/;"	f
+maq	prob_common.h	/^    int  *maq[2];$/;"	m	struct:_prob_elem
+max	prob_common.h	46;"	d
+min	prob_common.h	43;"	d
+my_argc	tech_map.c	/^int my_argc = 23;$/;"	v
+my_argc	tech_red.c	/^int my_argc = 17;$/;"	v
+my_argv	tech_map.c	/^char *my_argv[23] = { "runall",$/;"	v
+my_argv	tech_red.c	/^char *my_argv[17] = { "analyzer",$/;"	v
+next	prob_common.h	/^    struct _prob_elem * next;$/;"	m	struct:_prob_elem	typeref:struct:_prob_elem::_prob_elem
+next_pos	prob_common.h	/^    int next_pos;$/;"	m	struct:_prob_window
+output_name	genfq.c	/^static char output_name[64] = { 0, };$/;"	v	file:
+parse_args	analyzer_common.c	/^int parse_args( int argc, char *argv[],$/;"	f
+parse_args	extract.c	/^static int parse_args( int argc, char *argv[],$/;"	f	file:
+parse_args	genfa.c	/^static int parse_args( int argc, char *argv[], char *fasta, int *bpl )$/;"	f	file:
+parse_args	genfq.c	/^static int parse_args( int argc, char *argv[], $/;"	f	file:
+parse_args	mapper.c	/^static int parse_args( int argc, char *argv[],$/;"	f	file:
+parse_args	runall.c	/^static int parse_args( int argc, char *argv[], $/;"	f	file:
+parse_args	tech_map.c	/^extern int parse_args( int argc, char *argv[], $/;"	f
+parse_args_tech	tech_red.c	/^static int parse_args_tech( int argc, char *argv[], $/;"	f	file:
+parse_bam	extract.c	/^void parse_bam( char *tech, char *ref, int length, int start_base_pos, const char *bam )$/;"	f
+pileup_func	extract.c	/^static int pileup_func(uint32_t tid, uint32_t pos, int n, const bam_pileup1_t *pl, void *data)  $/;"	f	file:
+pileup_func	mapper.c	/^static int pileup_func(uint32_t tid, uint32_t pos, int n, const bam_pileup1_t *pl, void *data)  $/;"	f	file:
+pos	prob_common.h	/^    int  pos;   \/\/ org_pos$/;"	m	struct:_prob_elem
+prev_pos	prob_common.h	/^    int prev_pos;$/;"	m	struct:_prob_window
+prg	tech_map.c	/^char prg[16] = { 0, };$/;"	v
+prg	tech_red.c	/^char prg[16] = { 0, };$/;"	v
+prg_path	tech_map.c	/^char prg_path[256] = { 0,};$/;"	v
+prg_path	tech_red.c	/^char prg_path[256] = { 0,};$/;"	v
+print_lower4bit	extract.c	/^void print_lower4bit(int num)$/;"	f
+prob_destroy_window	prob_common.c	/^void prob_destroy_window( )$/;"	f
+prob_elem	prob_common.h	/^} prob_elem;$/;"	t	typeref:struct:_prob_elem
+prob_init_elem	prob_common.c	/^void prob_init_elem( prob_elem * pb, int size )$/;"	f
+prob_init_window	prob_common.c	/^void prob_init_window( int window_size, int length )$/;"	f
+prob_long_check_fill_elem	prob_long.c	/^void prob_long_check_fill_elem( prob_elem * pb, $/;"	f
+prob_long_clean_windows	prob_long.c	/^void prob_long_clean_windows( FILE * output, char * org_chr, int org_pos )$/;"	f
+prob_long_fill_elem	prob_long.c	/^void prob_long_fill_elem( prob_elem * pb, $/;"	f
+prob_long_fill_window	prob_long.c	/^int prob_long_fill_window( FILE * output, int distance, char *chr, $/;"	f
+prob_long_move_window	prob_long.c	/^int prob_long_move_window( FILE * output, int distance, char *org_chr, $/;"	f
+prob_print_elem	prob_common.c	/^void prob_print_elem( )$/;"	f
+prob_short_check_fill_elem	prob_short.c	/^void prob_short_check_fill_elem( prob_elem * pb, $/;"	f
+prob_short_clean_windows	prob_short.c	/^void prob_short_clean_windows( FILE * output, char * org_chr, int org_pos )$/;"	f
+prob_short_fill_elem	prob_short.c	/^void prob_short_fill_elem( prob_elem * pb, $/;"	f
+prob_short_fill_window	prob_short.c	/^int prob_short_fill_window( FILE * output, int distance, char *chr, $/;"	f
+prob_short_move_window	prob_short.c	/^int prob_short_move_window( FILE * output, int distance, char *org_chr, $/;"	f
+prob_window	prob_common.h	/^} prob_window;$/;"	t	typeref:struct:_prob_window
+pw	prob_common.h	/^prob_window pw;$/;"	v
+run_bwa	runall.c	/^static int run_bwa( char *tech, char *fasta, char *fastq_se, char *fastq_pe, int hadoop, char *bwa_path, int length ) \/\/, int length  )$/;"	f	file:
+run_exc_cp	runall.c	/^void run_exc_cp( char *src, char *dst )$/;"	f
+run_exc_ls	runall.c	/^void run_exc_ls( char * dir )$/;"	f
+run_exc_rm	runall.c	/^void run_exc_rm( char *filepath )$/;"	f
+run_exc_wc	runall.c	/^void run_exc_wc( char *filepath )$/;"	f
+run_samtools	runall.c	/^static int run_samtools( char *fasta, const char *aln_sam, $/;"	f	file:
+runall	runall.c	/^int runall(int argc, char *argv[])  $/;"	f
+runall_by_tech	tech_map.c	/^int runall_by_tech(int argc, char *argv[])  $/;"	f
+s	kseq.h	/^	char *s;$/;"	m	struct:__kstring_t
+size	prob_common.h	/^    int size;$/;"	m	struct:_prob_window
+sub	tech_map.c	/^char sub[16] = { 0, };$/;"	v
+sub	tech_red.c	/^char sub[16] = { 0, };$/;"	v
+sys	null_red.py	/^import sys$/;"	i
+tail	prob_common.h	/^    prob_elem * tail;$/;"	m	struct:_prob_window
+tec	tech_map.c	/^char tec[16] = { 0, };$/;"	v
+tech	tech_red.c	/^char tech[256] = { 0, };$/;"	v
+timestamp	runall.c	/^void timestamp()$/;"	f
+usage	main_mapper.c	/^extern void usage( int opt )$/;"	f
+usage	main_reducer.c	/^static void usage()$/;"	f	file:
+usage_extract	main_mapper.c	/^extern void usage_extract( int opt )$/;"	f
+usage_genfa	main_mapper.c	/^extern void usage_genfa( int opt )$/;"	f
+usage_genfqpe	main_mapper.c	/^extern void usage_genfqpe( int opt )$/;"	f
+usage_genfqse	main_mapper.c	/^extern void usage_genfqse( int opt )$/;"	f
+usage_runall	main_mapper.c	/^extern void usage_runall( int opt )$/;"	f
+usage_tech	main_mapper.c	/^extern void usage_tech( int opt )$/;"	f

@@ -1,0 +1,137 @@
+'''
+this should be run as a subprocess in background and be stopped once the others are completed - open a txt file to see if exit code is present
+
+main pipeline needs to run from 1 to N files at the same time...so batch operation...so take a folder of folders and run on each...
+
+this program needs to run from beginning to end of a given pipeline run...
+
+this program plots the HDD, CPU and MEM usage 
+'''
+import os
+import subprocess
+from subprocess import Popen, PIPE
+import time
+from time import gmtime, strftime
+
+def checkIfShouldContinueMonitoring(fileName,path):
+    try:
+        f = open(path+fileName,'r')
+        temp = f.readline()
+        f.close()
+        if "complete" in temp:
+            print "Exit signal received!"
+            return False
+        else:
+            return True
+    except:
+        print "file busy, will retry shorly"
+        return True
+        
+def available_memory():
+    temp =""
+    try:
+        p = Popen(['free', '-m'], stdin=PIPE, stdout=PIPE, stderr=PIPE)
+        output, err = p.communicate("input data that is passed to subprocess' stdin")
+        
+        temp = ""
+        prev = " "
+        for char in output:
+            if char == prev and prev == " ":
+                continue
+            else:
+                temp += char
+                prev = char
+        temp = temp.split("\n")[1]
+        temp = temp.split(" ")
+        temp = temp[2]
+    except:
+        print "error detecting free memory, re-attempting"
+        return "N/A"
+    return temp
+
+def writeOutput(logPath, timeLogName, tempData):
+    f = open(logPath+timeLogName,'a')
+    for x in tempData:
+        #f.write(str(x[0])+"\t"+str(x[1])+"\t"+str(x[2])+"\t"+str(x[3])+"\t"+str(x[4])+"\t"+str(x[5])+"\t"+str(x[6])+"\t"+strftime("%Y-%m-%d %H:%M:%S", gmtime())+"\n")"\n") #mem, cpu, hdd, time
+        f.write(str(x[0])+"\t"+str(x[1])+"\t"+str(x[2])+"\t"+str(x[3])+"\t"+str(round(x[6],1))+"\t"+x[7]+"\n") #mem, cpu, hdd, time
+    f.close()
+def measure(timeInterval, start, cur):
+    cmd = ["iostat","-x","1",str(timeInterval+1)]   #"2"]
+    pipe = subprocess.Popen(cmd, shell = False, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    out, err = pipe.communicate()
+    result = out.decode() 
+    temp = result.split("avg-cpu:")[-1]
+    temp = temp.split("\n")
+    #Determine which lines to grab for iostat / hdd and cpu usage
+    #pos = -1
+    #for x in temp:
+    #    pos += 1
+    #    print pos,"\t", x
+    #print "-"*20
+    cpu_usage1 = str(temp[1]).split()[0]
+    cpu_usage2 = str(100.0 - float(temp[1].split()[-1]))
+    hdd_usage = str(temp[4]).split()[-1] #vbox
+    #hdd_usage = str(temp[12]).split()[-1] #server
+    mem = available_memory()
+    
+    #print "cpu usage:",cpu_usage1, cpu_usage2 
+    #print "hdd usage", hdd_usage 
+    #print "mem",mem
+    #print "-"*10
+    return [mem,cpu_usage1,cpu_usage2,hdd_usage,start,cur,cur-start,strftime("%Y-%m-%d %H:%M:%S", gmtime())]
+    
+def updateStats(timeInterval,resultWriteInterval, logPath, timeLogName,checkInterval):
+    #wait until the file exitSignal exists, keep monitoring until then, write results to file using a modest buffer
+    fileName = "exitSignal.txt"
+    path = "/home/pagit/USAP/"
+    flag = True
+    resultCounter = 0
+    tempData = []
+    counter = 0
+    checkEveryNSec = 2
+    avr_measure_time = 0.0 #my guess based on previous values
+    raw_input("press enter to start...")
+    print "measuring..."
+    start = time.time()
+    i = 0
+    while flag:
+        i += 1
+##        print "should be at position in time:", i*checkEveryNSec
+##        print "real time that has progressed", time.time() - start
+##        print "sleeping for", i*checkEveryNSec - (time.time()- start )
+        #time.sleep(i*checkEveryNSec - (time.time()- start ))
+        time.sleep(start +i*checkEveryNSec - time.time())
+        counter += 1
+        resultCounter += 1
+        tempData.append(measure(timeInterval, start, time.time()))
+        if counter >= checkInterval:
+            counter = 0
+            flag = checkIfShouldContinueMonitoring(fileName,path) #time cost
+        if resultCounter >= resultWriteInterval:
+            resultCounter = 0
+            writeOutput(logPath, timeLogName, tempData)
+            tempData = []
+        
+    ######################################################        
+    #Extra Write to make sure captured all
+    if resultCounter <> resultWriteInterval:
+        writeOutput(logPath, timeLogName, tempData)
+    print "All sampling completed"
+    return
+    
+##################################################################################
+timeInterval = 1 # seconds between measurements --> The minimum is 2 sec, otherwise iostat gives the same result each time.
+#measurePeriod = 120 # keep measuring up to a total of ~n seconds
+##print "Will measure", measurePeriod/timeInterval, "measurements -->", (measurePeriod/timeInterval) * timeInterval,"seconds -->", ((measurePeriod/timeInterval)*timeInterval)/60.0,"minutes"
+resultWriteInterval = 10 # after every 5 measurements, write the output to file
+logPath = "/home/pagit/" #must end with "/"
+timeLogName = "sysUsageLog.txt"
+f = open(logPath+timeLogName,'w')
+f.write("mem\tcpu_User\tcpu_Total\thdd\telapsed_Time\tDateTime\n")
+f.close()
+#raw_input("increse check interval here")
+checkInterval = 10 # so update at leasts N times before checking if the exit signal has been sent ot file
+updateStats(timeInterval,resultWriteInterval, logPath, timeLogName,checkInterval)
+#subprocess.call(["afplay","/media/sf_VBOXSHARE/testSound.wav"])
+##################################################################################
+   

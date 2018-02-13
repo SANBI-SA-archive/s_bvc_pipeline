@@ -1,0 +1,5 @@
+java -jar /home/pagit/USAP/Tools/Trimmomatic-0.32/trimmomatic-0.32.jar SE -threads 2 -phred33 /media/sf_VBOXSHARE/2do/MTB_K116.fastq.gz /media/sf_VBOXSHARE/2do_out2/FastQ_Quality_Trim/MTB_K116_trimSE.fastq ILLUMINACLIP:/home/pagit/USAP/Tools/illumina_adapters.fna.fasta:2:30:10 LEADING:20 TRAILING:20 SLIDINGWINDOW:4:20 MINLEN:36 
+gzip /media/sf_VBOXSHARE/2do_out2/FastQ_Quality_Trim/MTB_K116_trimSE.fastq 
+java -jar /home/pagit/USAP/Tools/Trimmomatic-0.32/trimmomatic-0.32.jar SE -threads 2 -phred33 /media/sf_VBOXSHARE/2do/MTB_K116.fastq.gz /media/sf_VBOXSHARE/2do_out2/FastQ_Quality_Trim/MTB_K116_trimSE.fastq ILLUMINACLIP:/home/pagit/USAP/Tools/illumina_adapters.fna.fasta:2:30:10 LEADING:20 TRAILING:20 SLIDINGWINDOW:4:20 MINLEN:36
+gzip /media/sf_VBOXSHARE/2do_out2/FastQ_Quality_Trim/MTB_K116_trimSE.fastq 
+
